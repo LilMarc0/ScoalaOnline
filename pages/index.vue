@@ -40,14 +40,14 @@
       <div class="centred">
           <h1 class="title"> Teste </h1>
       </div>
-     <div class="container column is-10">
+     <div class="container column">
       <Cursuri/>
     </div>
     <SmallHero/>
       <div class="centred">
           <h1 class="title"> Cursuri </h1>
       </div>
-     <div class="container column is-10">
+     <div class="container column">
       <Cursuri/>
     </div>
   </section>

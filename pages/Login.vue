@@ -1,12 +1,12 @@
 <template>
   <section class="container column is-6">
-      <RegisterForm/>
+      <LoginForm/>
   </section>
 </template>
 
 <script>
 export default {
-  name: 'Register',
+  name: 'Login',
   layout: 'register',
   components: {
 

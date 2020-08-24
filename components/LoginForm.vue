@@ -1,37 +1,20 @@
 <template>
     <section>
-        <h1 class="header"> Creeaza un cont nou </h1>
-        <b-field label="Nume">
-            <b-input></b-input>
-        </b-field>
-        <b-field label="Prenume">
-            <b-input></b-input>
-        </b-field>
         <b-field label="Email">
             <b-input type="email"
                 maxlength="30">
             </b-input>
         </b-field>
 
-        <b-field label="Username">
-            <b-input maxlength="30"></b-input>
-        </b-field>
-
         <b-field label="Parola">
             <b-input type="password" maxlength="30"></b-input>
         </b-field>
 
-        <b-field label="Tip cont">
-            <b-select placeholder="Selecteaza tipul contului">
-                <option value="1">Profesor</option>
-                <option value="2">Elev</option>
-            </b-select>
-        </b-field>
         <div class="container">
             <b-button
                 tag="input"
                 native-type="submit"
-                value="Inregistrare" />
+                value="Logare" />
         </div>
 
     </section>

@@ -29,20 +29,9 @@
             <b-navbar-item tag="div">
                 <div class="buttons">
                     <nuxt-link class="button is-primary" to="/register"> Creeaza cont </nuxt-link>
-                    <a class="button is-light">Logare</a>
+                    <nuxt-link class="button is-light" to="/login"> Logare</nuxt-link>
                 </div>
             </b-navbar-item>
         </template>
     </b-navbar>
 </template>
-
-<style scoped>
-    .navbar {
-        background-image:
-    linear-gradient(to bottom, rgba(140,103,239,0.57),rgba(140,103,239,0.77)),
-    url('../assets/elevi.jpg');        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-</style>

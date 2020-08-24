@@ -1,10 +1,8 @@
 <template>
   <div>
-    <TopNav/>
-    <section>
-      <div>
-        <nuxt />
-      </div>
+    <Hero/>
+    <section class="register">
+      <nuxt />
     </section>
   </div>
 </template>
@@ -18,3 +16,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .register {
+    position: relative;
+  }
+</style>

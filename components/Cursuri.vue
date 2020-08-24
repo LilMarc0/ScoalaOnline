@@ -1,4 +1,5 @@
 <template>
+<div class="container column is-12">
     <div class="columns is-mobile">
         <CourseCard v-for="(curs, key) of cursuri"
             :key="key"
@@ -8,6 +9,7 @@
             :icon=curs.imagine
             />
     </div>
+</div>
 </template>
 
 <script>
@@ -52,3 +54,41 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.container {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 21px;
+    text-align: center;
+
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 1s; /* Firefox < 16 */
+        -ms-animation: fadein 1s; /* Internet Explorer */
+         -o-animation: fadein 1s; /* Opera < 12.1 */
+            animation: fadein 1s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+</style>

@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <TopNav/>
+  <div>  
     <Hero/>
     <section>
       <!-- <aside class="column is-2 section">
