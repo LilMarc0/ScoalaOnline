@@ -37,15 +37,18 @@
         No other internal dependency
       </card>
     </div> -->
+      <div class="centred">
+          <h1 class="title"> Teste </h1>
+      </div>
      <div class="container column is-10">
-      <!-- <h1 class="title"> Ceva titlu de lauda</h1> -->
       <Cursuri/>
     </div>
     <SmallHero/>
-    <div class="container column is-10">
-      <!-- <h1 class="title"> Ceva titlu de lauda</h1> -->
-      <div  class="columns is-mobile">
+      <div class="centred">
+          <h1 class="title"> Cursuri </h1>
       </div>
+     <div class="container column is-10">
+      <Cursuri/>
     </div>
   </section>
 </template>
@@ -69,3 +72,16 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+  .centred { 
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .container.column.is-10{
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+  }
+</style>

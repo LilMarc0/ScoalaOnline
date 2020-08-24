@@ -25,6 +25,7 @@
       <div>
         <nuxt />
       </div>
+      <Footer/>
     </section>
   </div>
 </template>
