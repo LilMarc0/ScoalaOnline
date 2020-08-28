@@ -1,16 +1,27 @@
 <template>
   <section class="container column is-6">
-      <RegisterForm/>
+      <RegisterForm
+      :model="model"
+      />
   </section>
 </template>
 
 <script>
 export default {
   name: 'Register',
-  layout: 'register',
-  components: {
-
-  }
+  layout: 'RegisterLayout',
+    data() {
+      return {
+        model: {
+          email: '',
+          surename: '',
+          name: '',
+          username: '',
+          password: '',
+          role: ''
+        }
+      }
+    }
 }
 </script>
 

@@ -1,8 +1,8 @@
-
+import axios from 'axios'
 export default {
   /*
   ** Nuxt rendering mode
-  ** See https://nuxtjs.org/api/configuration-mode
+  ** See https://nuxtjs.org/api/configuratnuxtjsion-mode
   */
   mode: 'spa',
   /*
@@ -30,6 +30,11 @@ export default {
   */
   css: [
   ],
+
+  server: {
+    port: 5000, // default: 3000
+    host: "192.168.1.222"
+  },
   /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
@@ -52,11 +57,36 @@ export default {
   modules: [
     // Doc: https://buefy.github.io/#/documentation
     'nuxt-buefy',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
+  axios: {
+    // proxyHeaders: false
+    baseURL: 'http://localhost:5001'
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'token' },
+          user: { url: 'me', method: 'get', propertyName: 'user' },
+          logout: false
+        },
+        tokenRequired: true,
+        tokenType: 'Bearer',
+        globalToken: true,
+      }
+    }
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+  },
+
+  generate: {
+    routes: ['/teste/informatica', '/teste/matematica']
   }
 }

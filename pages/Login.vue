@@ -1,6 +1,8 @@
 <template>
   <section class="container column is-6">
-      <LoginForm/>
+      <LoginForm
+      :model="model"
+      />
   </section>
 </template>
 
@@ -10,7 +12,15 @@ export default {
   layout: 'register',
   components: {
 
-  }
+  },
+  data() {
+      return {
+        model: {
+          email: '',
+          password: '',
+        }
+      }
+    }
 }
 </script>
 

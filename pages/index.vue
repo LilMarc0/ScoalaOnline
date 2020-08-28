@@ -62,7 +62,7 @@ import Cursuri from '~/components/Cursuri'
 
 export default {
   name: 'HomePage',
-
+  auth: 'guest',
   components: {
     Card,
     CourseCard,

@@ -9,17 +9,23 @@
             </b-navbar-item>
         </template>
         <template slot="start">
-            <b-navbar-item href="#">
+            <b-navbar-item href="">
                 Acasa
             </b-navbar-item>
-            <b-navbar-item href="#">
+            <b-navbar-item href="">
                 Cursuri
             </b-navbar-item>
+            <b-navbar-item href="">
+                Teste
+            </b-navbar-item>
+            <nuxt-link v-if="isProf"  class="button is-success" to="/creeazagrile">
+                Creeaza Grile
+            </nuxt-link>
             <b-navbar-dropdown label="Cont">
-                <b-navbar-item href="#">
+                <b-navbar-item href="">
                     Profil
                 </b-navbar-item>
-                <b-navbar-item href="#">
+                <b-navbar-item href="">
                     Altceva
                 </b-navbar-item>
             </b-navbar-dropdown>
@@ -28,10 +34,40 @@
         <template slot="end">
             <b-navbar-item tag="div">
                 <div class="buttons">
-                    <nuxt-link class="button is-primary" to="/register"> Creeaza cont </nuxt-link>
-                    <nuxt-link class="button is-light" to="/login"> Logare</nuxt-link>
+                    <nuxt-link v-if="!isLoggedIn" class="button is-primary" to="/register"> Creeaza cont </nuxt-link>
+                    <nuxt-link v-if="!isLoggedIn" class="button is-light" to="/login"> Logare</nuxt-link>
+                    <h1 v-if="isLoggedIn"> Bine ai venit, {{userName}}</h1>
+                    <b-button v-if="isLoggedIn" class="button is-light" @click="logout"> Log out </b-button>
                 </div>
             </b-navbar-item>
         </template>
     </b-navbar>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+    props: {
+
+    },
+    computed: {
+        userName: function() {try {return this.$auth.user.username} catch{return ""}},
+        isProf: function() {try {return this.$auth.user.role == 'profesor'} catch {return false}},
+        isLoggedIn: function() {try { return this.$auth.loggedIn } catch{ return false}}
+    },
+    methods: {
+        logout() {
+            this.$auth.logout()
+            this.$router.push('/')
+      }
+    }
+}
+</script>
+
+<style scoped>
+    .h1 {
+        display: flex;
+        padding-left: 100px;
+    }
+</style>

@@ -44,8 +44,12 @@ export default {
           icon: 'lightbulb',
           to: { name: 'inspire' }
         }
-      ]
+      ],
+      nume: ""
     }
+  },
+  mounted() {
+    
   }
 }
 </script>

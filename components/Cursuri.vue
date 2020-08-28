@@ -7,6 +7,7 @@
             :subtitle=curs.subtitle
             :content=curs.content
             :icon=curs.imagine
+            :to=curs.to
             />
     </div>
 </div>
@@ -27,27 +28,17 @@ export default {
           title: 'Informatica',
           subtitle: 'Invata sa programezi intr-un mod interactiv',
           content: 'Descriere amanuntita etc, Descriere amanuntita etc, Descriere amanuntita etc, Descriere amanuntita etc, ',
-          imagine: 'info.png'
+          imagine: 'matrix',
+          to: "{name: 'teste', params: {nume: 'informatica'}}"
         },
         {
           title: 'Matematica',
           subtitle: 'Grile de matematica',
           content: 'Descriere amanuntita etc, Descriere amanuntita etc, Descriere amanuntita etc, Descriere amanuntita etc, ',
-          imagine: 'mate.webp'
+          imagine: 'mate',
+          to: "/teste"
 
 
-        },
-        {
-          title: 'Istorie',
-          subtitle: 'Grile de istorie',
-          content: 'Descriere amanuntita etc, Descriere amanuntita etc, Descriere amanuntita etc, Descriere amanuntita etc, ',
-          imagine: '~assets/matrix.jpg'
-        },
-        {
-          title: 'Fotografie',
-          subtitle: 'curs fotografie ',
-          content: 'Descriere amanuntita etc, Descriere amanuntita etc, Descriere amanuntita etc, Descriere amanuntita etc, ',
-          imagine: '~assets/matrix.jpg'
         },
       ]
     }

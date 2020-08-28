@@ -17,4 +17,10 @@ $ npm run start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+Cont profesor: 
+    email: calinepuran@yahoo.com
+    parola: parolacalin
+
+Cont elev
+    email: elev@elev.com
+    parola: parolaelev
