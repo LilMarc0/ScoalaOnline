@@ -1,7 +1,6 @@
 <template>
   <section class="container column is-6">
       <RegisterForm
-      :model="model"
       />
   </section>
 </template>
@@ -12,14 +11,6 @@ export default {
   layout: 'RegisterLayout',
     data() {
       return {
-        model: {
-          email: '',
-          surename: '',
-          name: '',
-          username: '',
-          password: '',
-          role: ''
-        }
       }
     }
 }

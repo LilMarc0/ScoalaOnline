@@ -2,10 +2,10 @@
     <section>
         <h1 class="header"> Creeaza un cont nou </h1>
         <b-field label="Nume">
-        <b-input v-model="model.surename"></b-input>
+        <b-input v-model="model.prenume"></b-input>
         </b-field>
         <b-field label="Prenume">
-            <b-input v-model="model.name"></b-input>
+            <b-input v-model="model.nume"></b-input>
         </b-field>
         <b-field label="Email">
             <b-input
@@ -32,7 +32,7 @@
         <b-field label="Tip cont">
             <b-select 
             placeholder="Selecteaza tipul contului"
-            v-model="model.role">
+            v-model="model.rol">
                 <option value="profesor">Profesor</option>
                 <option value="elev">Elev</option>
             </b-select>
@@ -59,10 +59,9 @@ export default {
     },
   },
     methods: {
-        handleRegister(evt) {
-            console.log(this.model);
+        handleRegister(evt) {; 
+            this.model.createDate = new Date(Date.now()).toISOString().slice(0, 19).replace('T', ' ');
             this.$axios.post("/register", this.model).then((res) => {
-                console.log(res);
                 this.$router.push("Login");
             });
         },

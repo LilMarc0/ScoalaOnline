@@ -1,6 +1,9 @@
 <template>
     <section>
         <h1 class="header"> Logheaza-te </h1>
+        <b-message v-if="badEmail" title="Eroare" type="is-danger" aria-close-label="Close message">
+            {{errorMessage}}
+        </b-message>
         <b-field label="Email">
             <b-input type="email"
                 maxlength="30"
@@ -38,11 +41,14 @@ export default {
      data() {
     return {
         loading: false,
-      badLogin: false
+        badLogin: false,
+        errorMessage: "",
+        errorCode: ""
     }
   },
   computed: {
-    rBadLogin() {return this.badLogin;}
+    rBadLogin() {return this.badLogin;},
+    badEmail() {return this.errorCode==="no_account"}
   },
  methods: {
     // handleLogin() {
@@ -68,9 +74,19 @@ export default {
         async handleLogin() {
         this.loading = true;
         if (this.model.email && this.model.password) {
-          await this.$auth.loginWith('local', {data: this.model})
-          console.log(this.$auth.loggedIn);
-          this.$router.push("/")
+          this.$auth.loginWith('local', {data: this.model}).then((res) => {
+            if(res.data.message === 'ok'){
+                this.$router.push("/")
+            } else if(res.data.message === 'no_account'){
+                this.errorMessage = "Email sau parola gresite"
+                this.errorCode = res.data.message
+            }
+
+
+          }).catch(error => {
+                this.errorMessage = "Email sau parola gresite"
+                this.errorCode = res.data.message
+          })
         }
 
     }

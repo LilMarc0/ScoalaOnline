@@ -10,6 +10,9 @@ export default {
   layout: 'Teste',
   components: {
 
+  },
+  mounted(){
+    
   }
 }
 </script>

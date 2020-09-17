@@ -2,12 +2,12 @@ const jwt = require('jsonwebtoken');
 
 function checkTokenSetUser(req, res, next) {
   const authHeader = req.get('authorization');
-  console.log('asdasd');
   if (authHeader) {
     const token = authHeader.split(' ')[1];
-    if (token) {
+    if (token && token !== 'null') {
       jwt.verify(token, process.env.TOKEN_SECRET, { algorithms: ['RS256'] }, (error, user) => {
         if (error) {
+          console.log('AUTH HEAD THAT CREATES ERROR ', authHeader, token);
           console.log(error);
         }
         req.user = user;
@@ -15,7 +15,6 @@ function checkTokenSetUser(req, res, next) {
       });
     } else {
       console.log('Nu verifica');
-      console.log();
       next();
     }
   } else {

@@ -43,7 +43,6 @@ export default {
         this.$axios.get(`/categorii/${this.$route.params.materie}`)
         .then( (res) => {
             this.categorii = res.data
-            console.log('-------------', this.categorii);
         })
   },
   methods: {

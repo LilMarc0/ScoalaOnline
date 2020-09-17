@@ -68,6 +68,7 @@ export default {
         margin: 1rem;
         border-radius: 1rem;
         box-shadow: 10px 10px 8px #888888;
+        min-width: 500px;
     }
 
     .title {

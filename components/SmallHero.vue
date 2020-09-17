@@ -30,5 +30,5 @@ export default {
         background-repeat: no-repeat;
         background-size: cover;
         box-shadow: inset 0 5px 15px 2px #202020;
-    }
+    width: 100%;    }
 </style>

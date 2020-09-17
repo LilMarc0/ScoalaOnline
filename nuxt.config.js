@@ -33,7 +33,7 @@ export default {
 
   server: {
     port: 5000, // default: 3000
-    host: "192.168.1.222"
+    host: "localhost" // "192.168.1.222"
   },
   /*
   ** Plugins to load before mounting the App
@@ -62,7 +62,7 @@ export default {
   ],
   axios: {
     // proxyHeaders: false
-    baseURL: 'http://localhost:5001'
+    baseURL: 'http://localhost:5001/' // 'http://79.113.119.179:5001/'
   },
 
   auth: {
