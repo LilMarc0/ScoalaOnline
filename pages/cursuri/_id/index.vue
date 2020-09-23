@@ -1,9 +1,12 @@
 <template>
-  <h3>Cursul {{id}}</h3>
+<div class="tile is-parent">
+    <CourseOverview/>
+</div>  
 </template>
 
 <script>
 export default {
+    layout: "CursLayout",
     data() {
         return {
             id: 0
@@ -16,5 +19,8 @@ export default {
 </script>
 
 <style>
-
+    .h1 {
+        font-weight: bold;
+        text-align: center;
+    }
 </style>

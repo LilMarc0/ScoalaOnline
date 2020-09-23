@@ -3,23 +3,20 @@
     <Hero/>
     <section>
        <Sidebar/>
-          <div id="tile is-ancestor">
-        <nuxt/>
+       <div id="tile is-ancestor">
+          <nuxt/>
        </div>
+      <Footer/>
     </section>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-        nume: ''
-    }
-  }
+    name: "CursLayout"
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>

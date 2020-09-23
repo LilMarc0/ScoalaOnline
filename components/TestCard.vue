@@ -13,7 +13,7 @@
         </figure>
       </div>
       <div class="media-content">
-        <nuxt-link :to="`/cursuri/${title.toLowerCase()}`" class="title is-4"> {{title}} </nuxt-link>
+        <nuxt-link :to="`/teste/${title.toLowerCase()}`" class="title is-4"> {{title}} </nuxt-link>
         <p class="subtitle is-6"> {{subtitle}}</p>
       </div>
     </div>
@@ -72,7 +72,7 @@ export default {
         max-width: 20rem;
         min-height: 40rem;
         max-height: 20rem;
-    }
+      }
 
     .title {
       display: block;

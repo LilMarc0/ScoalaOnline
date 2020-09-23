@@ -1,7 +1,7 @@
 <template>
 <div class="container column is-12">
     <div class="columns is-mobile">
-        <CourseCard v-for="(curs, key) of cursuri"
+        <TestCard v-for="(curs, key) of cursuri"
             :key="key"
             :title=curs.title
             :subtitle=curs.subtitle
@@ -14,11 +14,9 @@
 </template>
 
 <script>
-import Card from "./CourseCard"
 
 export default {
     components: {
-        Card
     },
 
     data () {

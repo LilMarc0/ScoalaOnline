@@ -4,7 +4,7 @@
     <div class="hero-body is-primary">
       <div class="container">
         <h1 class="title">
-          Sedu sau cumva
+          EduMania
         </h1>
         <h2 class="subtitle">
             Cele mai bune cursuri online lol

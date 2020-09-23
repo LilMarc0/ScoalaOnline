@@ -48,14 +48,19 @@
           <h1 class="title"> Cursuri </h1>
       </div>
      <div class="container column">
-      <Cursuri/>
+      <CourseCard
+      title='VueJS'
+      subtitle='Invata sa frontend intr-un mod practic'
+      content=' Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, '
+      icon='matrix'
+      to="{name: 'cursuri', params: {nume: VueJS}}"
+      />
     </div>
   </section>
 </template>
 
 <script>
 import Card from '~/components/Card'
-import CourseCard from '~/components/CourseCard'
 import SmallHero from '~/components/SmallHero'
 import Level from '~/components/Level'
 import Cursuri from '~/components/Cursuri'
@@ -65,7 +70,6 @@ export default {
   auth: 'guest',
   components: {
     Card,
-    CourseCard,
     SmallHero,
     Level,
     Cursuri

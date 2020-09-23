@@ -12,7 +12,7 @@
                 <div class="p-1">
                     <div class="block">
                     <img
-                        src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
+                        src="../assets/buefy.png"
                         alt="Lightweight UI components for Vue.js based on Bulma"
                     />
                     </div>
@@ -72,6 +72,8 @@ export default {
         display: flex;
         flex-direction: row;
         min-height: 100%;
+            height: 100%;
+
         // min-height: 100vh;
     }
 }
