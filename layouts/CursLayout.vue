@@ -1,8 +1,7 @@
 <template>
   <div>
     <Hero/>
-    <section>
-       <Sidebar/>
+    <section id="main">
        <div id="tile is-ancestor">
           <nuxt/>
        </div>
@@ -17,6 +16,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  .tile{
+    margin: auto;
+    width: 50%;
+    padding: 10px
+  }
 
 </style>

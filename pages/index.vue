@@ -41,7 +41,7 @@
           <h1 class="title"> Teste </h1>
       </div>
      <div class="container column">
-      <Cursuri/>
+      <Teste/>
     </div>
     <SmallHero/>
       <div class="centred">
@@ -55,6 +55,7 @@
       icon='matrix'
       to="{name: 'cursuri', params: {nume: VueJS}}"
       />
+      <!-- <Cursuri/> -->
     </div>
   </section>
 </template>
@@ -63,7 +64,7 @@
 import Card from '~/components/Card'
 import SmallHero from '~/components/SmallHero'
 import Level from '~/components/Level'
-import Cursuri from '~/components/Cursuri'
+import Teste from '~/components/Teste'
 
 export default {
   name: 'HomePage',
@@ -72,7 +73,7 @@ export default {
     Card,
     SmallHero,
     Level,
-    Cursuri
+    Teste
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-primary is-medium">
+  <section class="hero  is-medium">
     <TopNav/>
     <div class="hero-body is-primary">
       <div class="container">
@@ -7,7 +7,7 @@
           EduMania
         </h1>
         <h2 class="subtitle">
-            Cele mai bune cursuri online lol
+          Flexeaza-ti inteligenta
         </h2>
       </div>
     </div>
@@ -32,5 +32,14 @@ export default {
         box-shadow: inset 0 -5px 15px 2px #202020;
         /* box-shadow: inset 0 -2px 1rem 0.25rem #202020; */
         width: 100%;
+    }
+
+    .title{
+      color: white;
+    }
+
+    .subtitle{
+      color: white;
+      padding-left: 1rem;
     }
 </style>

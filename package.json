@@ -19,7 +19,8 @@
     "nuxt": "^2.13.0",
     "nuxt-buefy": "^0.3.31",
     "sass-loader": "^9.0.3",
-    "vue-core-video-player": "^0.1.9"
+    "vue-core-video-player": "^0.1.9",
+    "vue-video-player": "^5.0.2"
   },
   "devDependencies": {
     "@vue/test-utils": "^1.0.3",

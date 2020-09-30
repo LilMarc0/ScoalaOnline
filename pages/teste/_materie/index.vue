@@ -1,5 +1,5 @@
 <template>
-  <h3>Teste la materia {{materie}} {{this.$route.fullPath.split('/')}} </h3>
+  <h3>Teste la materia {{materie}} </h3>
 </template>
 
 <script>

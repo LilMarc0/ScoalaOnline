@@ -40,18 +40,20 @@ export default {
     };
   },
   mounted() {
-        this.$axios.get(`/categorii/${this.$route.params.materie}`)
+        this.$axios.get(`/categorii/dupa_materie/${this.materie.idMaterii}`)
         .then( (res) => {
-            this.categorii = res.data
+            this.categorii = res.data.map(r=>r.nume_categorie);
         })
   },
   methods: {
       moveTo: function(cat) {
-          const path = this.$route.fullPath.split('/')
-          let t = path[1]
-          let materie = path[2]
-          this.$router.push('/' + t + '/' + materie + '/' + cat)
+          this.$router.push('/teste' + '/' + this.materie.nume_materie + '/' + cat)
           }
+  },
+  props: {
+      materie: {
+          type: Object
+      }
   }
 };
 </script>

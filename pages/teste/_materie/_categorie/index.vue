@@ -1,6 +1,6 @@
 <template>
   <div class="tile is-parent">
-      <Grila/>
+      <Grile/>
   </div>
 </template>
 

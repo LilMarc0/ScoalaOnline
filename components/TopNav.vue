@@ -21,12 +21,15 @@
             <nuxt-link v-if="isProf"  class="button is-success" to="/creeazagrile">
                 Creeaza Grile
             </nuxt-link>
+            <nuxt-link v-if="isProf"  class="button is-danger" to="/creeazacurs">
+                Creeaza Curs
+            </nuxt-link>
             <b-navbar-dropdown label="Cont">
-                <b-navbar-item href="">
+                <b-navbar-item href="/profil">
                     Profil
                 </b-navbar-item>
-                <b-navbar-item href="">
-                    Altceva
+                <b-navbar-item href="/progres">
+                    Progres
                 </b-navbar-item>
             </b-navbar-dropdown>
         </template>
@@ -36,7 +39,7 @@
                 <div class="buttons">
                     <nuxt-link v-if="!isLoggedIn" class="button is-primary" to="/register"> Creeaza cont </nuxt-link>
                     <nuxt-link v-if="!isLoggedIn" class="button is-light" to="/login"> Logare</nuxt-link>
-                    <h1 v-if="isLoggedIn"> Bine ai venit, {{userName}}</h1>
+                    <p class="info" v-if="isLoggedIn"> Bine ai venit, {{userName}}, credit: {{credit}}  </p>
                     <b-button v-if="isLoggedIn" class="button is-light" @click="logout"> Log out </b-button>
                 </div>
             </b-navbar-item>
@@ -48,26 +51,33 @@
 import { mapGetters } from 'vuex'
 
 export default {
+    data() {
+        return {
+        }
+    },
     props: {
 
     },
     computed: {
-        userName: function() {try {return this.$auth.user.username} catch{return ""}},
+        userName: function() {try {return this.$auth.user.username} catch{return "eroare userName"}},
         isProf: function() {try {return this.$auth.user.role == 'profesor'} catch {return false}},
-        isLoggedIn: function() {try { return this.$auth.loggedIn } catch{ return false}}
+        isLoggedIn: function() {try { return this.$auth.loggedIn } catch{ return false}},
+        credit: function() { return this.$store.getters.brainPoints}
     },
     methods: {
         logout() {
             this.$auth.logout()
             this.$router.push('/')
-      }
+      },
+    },
+    mounted(){
+
     }
 }
 </script>
 
 <style scoped>
-    .h1 {
-        display: flex;
-        padding-left: 100px;
+    .info {
+        margin-right: 1rem;
     }
 </style>
