@@ -2,24 +2,24 @@
  <div class="card">
   <div class="card-image">
     <figure class="image is-4by3">
-      <img :src="getImg(this.icon)" alt="Placeholder image">
+      <img :src="curs.linkThumbnail" alt="Placeholder image">
     </figure>
   </div>
   <div class="card-content">
     <div class="media">
       <div class="media-left">
         <figure class="image is-48x48">
-          <img :src="getImg(this.icon)" alt="Placeholder image">
+          <img :src="curs.linkThumbnail" alt="Placeholder image">
         </figure>
       </div>
       <div class="media-content">
-        <nuxt-link :to="`/cursuri/${title.toLowerCase()}`" class="title is-4"> {{title}} </nuxt-link>
-        <p class="subtitle is-6"> {{subtitle}}</p>
+        <nuxt-link :to="`/cursuri/${curs.idCurs}`" class="title is-4"> {{curs.nume}} </nuxt-link>
+        <p class="subtitle is-6"> {{curs.subtitlu}}</p>
       </div>
     </div>
 
     <div class="content">
-      {{content}}
+      {{curs.descriere}}
     </div>
   </div>
 </div>
@@ -33,31 +33,14 @@ export default {
         }
     },
     props: {
-        title: {
-            type: String,
-            required: true
-        },
-        subtitle: {
-            type: String,
-            required: true
-        },
-        content: {
-            type: String,
-            required: true
-        },
-        icon: {
-            type: String,
-            required: true
-        },
-        to: {
-            type: String,
-            required: true
-        }
+      curs: {
+        type: Object,
+        required: true
+      }
     },
     methods: {
       getImg: function(src){
-        const images = require.context('../assets/', false, /\.png$/)
-        return images('./' + src + ".png")
+        return ;
       }
     }
 }

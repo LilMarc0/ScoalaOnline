@@ -13,15 +13,11 @@ export default {
     layout: "CursLayout",
     data() {
         return {
-            curs: {
-                videoSrc: "../assets/demo.mp4",
-                courseTitle: "VueJS de la A la Z",
-                description: "Curs care acopera conceptele de baza din JS, HTML, CSS, introduce framework-ul VueJS etcetc Curs care acopera conceptele de baza din JS, HTML, CSS, introduce framework-ul VueJS etcetc Curs care acopera conceptele de baza din JS, HTML, CSS, introduce framework-ul VueJS etcetc Curs care acopera conceptele de baza din JS, HTML, CSS, introduce framework-ul VueJS etcetcCurs care acopera conceptele de baza din JS, HTML, CSS, introduce framework-ul VueJS etcetc",
-                }
+            curs: null
         }
     },
     mounted() {
-        //this.$axios.get()
+         this.$axios.get()
     }
 }
 </script>

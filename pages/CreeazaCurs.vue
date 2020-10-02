@@ -1,9 +1,16 @@
 <template>
   <div class="container column is-10 has-text-centred">
-      <b-field label="Nume">
+      <b-field label="Titlu">
           <b-input 
             type="text"
             v-model="model.nume">
+              
+          </b-input>
+      </b-field>
+    <b-field label="Subtitlu">
+          <b-input 
+            type="text"
+            v-model="model.subtitlu">
               
           </b-input>
       </b-field>
@@ -14,13 +21,16 @@
               
           </b-input>
       </b-field>
+    <section>
         <b-field label="Skill-uri dobandite">
-          <b-input 
-            type="text"
-            v-model="model.ce_vei_invata">
-              
-          </b-input>
-      </b-field>
+            <b-taginput
+                v-model="cvi"
+                ellipsis
+                icon="label"
+                placeholder="Adauga skill">
+            </b-taginput>
+        </b-field>
+    </section>
       <section>
         <b-field label="Thumbnail">
             <b-upload v-model="tmb"
@@ -85,13 +95,15 @@ export default {
         return {
             model: {
                 nume: "",
+                subtitlu: "",
                 descriere: "",
                 ce_vei_invata: "",
                 linkThumbnail: "",
                 linkDemo: ""
             },
             tmb: null,
-            demo: null,  
+            demo: null,
+            cvi: []
             }
     },
     computed: {
@@ -102,6 +114,11 @@ export default {
                 this.tmb = null
             },
             send() {
+
+                let cv;
+                for(cv of this.cvi)
+                    this.model.ce_vei_invata += cv + "*";
+
                 let fd = new FormData();
                 fd.append('tmb', this.tmb)
                 fd.append('demo', this.demo)

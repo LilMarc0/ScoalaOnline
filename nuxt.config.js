@@ -39,7 +39,7 @@ export default {
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
   */
-  plugins: [ '@/plugins/videoPlayer.js'
+  plugins: [ '@/plugins/videoPlayer.js', '@/plugins/route.js'
   ],
   /*
   ** Auto import components
@@ -85,8 +85,4 @@ export default {
   */
   build: {
   },
-
-  generate: {
-    routes: ['/teste/informatica', '/teste/matematica']
-  }
 }

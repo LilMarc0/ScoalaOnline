@@ -2,12 +2,8 @@
   <div class="container column is-12">
     <div class="columns is-mobile">
         <CourseCard v-for="(curs, key) of cursuri"
-            :key="key"
-            :title=curs.nume
-            :subtitle=curs.subtitle
-            :content=curs.descriere
-            :icon=curs.linkThumbnail
-            :to=curs.to
+              :key=key
+              :curs=curs
             />
     </div>
 </div>
@@ -22,8 +18,8 @@ export default {
   },
   mounted() {
     this.$axios.get('/curs').then((res)=>{
-      this.cursuri=res
-      console.log(res);
+      this.cursuri=res.data
+      console.log('cursuri: ', res);
       })
   }
 }
