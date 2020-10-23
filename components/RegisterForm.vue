@@ -53,13 +53,11 @@ export default {
     props: {
     model: {
       type: Object,
-      default: () => {
-        return {};
-      },
+      default: () => ({}),
     },
   },
     methods: {
-        handleRegister(evt) {; 
+        handleRegister(evt) { 
             this.model.createDate = new Date(Date.now()).toISOString().slice(0, 19).replace('T', ' ');
             this.$axios.post("/register", this.model).then((res) => {
                 this.$router.push("Login");

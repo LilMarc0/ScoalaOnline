@@ -105,17 +105,20 @@ export default {
             this.model.idCategorie = this.model.categorie.idCategorii;
             delete this.model.materie;
             delete this.model.categorie;
-            console.log(this.variante);
             for(let i=0; i<this.model.nr_variante; i++){
                 const nrv = `Varianta${i+1}`
                 this.model[nrv] = this.variante[i];
-                console.log(this.model[nrv], this.variante[i]);
             }
-            console.log(this.model);
             this.$axios.post('/grile', this.model)
+
+            this.$buefy.snackbar.open({
+                    duration: 5000,
+                    message: 'Grila a fost acceptata',
+                    position: 'is-bottom-left',
+                })
+            this.$router.push('/')
         },
         PopuleazaCategorii: function(e) {
-            console.log(this.model.materie);
             this.$axios.get(`/categorii/dupa_materie/${this.model.materie.idMaterii}`)
             .then( (res) => {
                 this.categorii = res.data

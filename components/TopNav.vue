@@ -18,6 +18,9 @@
             <b-navbar-item href="">
                 Teste
             </b-navbar-item>
+            <b-navbar-item href="/admin">
+                Admin Zone
+            </b-navbar-item>
             <nuxt-link v-if="isProf"  class="button is-success" to="/creeazagrile">
                 Creeaza Grile
             </nuxt-link>
@@ -25,7 +28,7 @@
                 Creeaza Curs
             </nuxt-link>
             <b-navbar-dropdown label="Cont">
-                <b-navbar-item href="/profil">
+                <b-navbar-item  v-if="this.$auth.user" :href="'/profil/' + this.$auth.user.id">
                     Profil
                 </b-navbar-item>
                 <b-navbar-item href="/progres">
@@ -71,7 +74,6 @@ export default {
       },
     },
     mounted(){
-
     }
 }
 </script>

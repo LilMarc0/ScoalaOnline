@@ -1,41 +1,54 @@
 <template>
-<div class="tile is-parent">
-    <section v-if="curs">
+<div>
+    <section v-if="curs" class="container">
     <div class="has-text-centered">
-    <router-link class="title is-1 ttl" :to="{path: 'view'}" append> {{curs.nume}}</router-link>
+        <router-link class="title is-1 ttl" :to="{path: 'view'}" append> {{curs.nume}}</router-link>
     </div>
-    
+
       <article class="has-text-justified des">
           <p>
               {{curs.descriere}}
           </p>
       </article>
-    <video-player v-if="curs" 
-                class="video-player-box "
-                 ref="videoPlayer"
-                 :options="playerOptions"
-                 :playsinline="true"
-                 @ready="playerReady($event)"
-                 @statechanged="playerReady($event)">
-    </video-player>
+
     <h2 class="title is-3 cvi">Ce vei invata: </h2>
 
-    <section>
-        <b-steps v-model="activeStep">
+    <!-- <section>
+        <b-steps v-model="activeStep" :has-navigation="false">
             <template v-for="(step, index) in curs.ce_vei_invata">
                 <b-step-item
                     v-if="step"
                     :key="index"
                     :clickable="true"
                     :visible="true"
-                    :label="step">
-                    {{ step }}
+                    :label="step"
+                    >
                 </b-step-item>
             </template>
         </b-steps>
-    </section>
+    </section> -->
+
+    <b-button v-if="this.curs.creator == this.$auth.user._id" @click="sterge()">Sterge curs</b-button>
   </section>
-</div>  
+
+    <section class="video">
+        <video-player autoplay 
+                    v-if="curs" class="video-player-box"
+                    ref="videoPlayer"
+                    :options="playerOptions"
+                    :playsinline="true">
+        </video-player>
+    </section>
+
+
+
+    <Chapters
+    v-if="chapters"
+    :chapters="chapters"
+    v-on:insertChapter="insertChapter($event)"
+    v-on:viewChapter="viewChapter($event)"
+    />
+</div> 
 </template>
 
 <script>
@@ -45,7 +58,8 @@ export default {
         return {
             activeStep: 0,
             curs: null,
-            playerOptions: null
+            playerOptions: null,
+            chapters: null,
         }
     },
     computed: {
@@ -54,28 +68,42 @@ export default {
       }
     },
     mounted(){
-        this.$axios.get(`curs/${this.$route.fullPath.split('/')[2]}`).then((res)=>{
-            this.curs = res.data[0];
-            let cvi = res.data[0].ce_vei_invata.split('*');
-            cvi.pop();
-            this.curs.ce_vei_invata = cvi;
+        this.$axios.get(`/curs/${this.$route.fullPath.split('/')[2]}`).then((res)=>{
+            console.log(res.data);
+            this.curs = res.data;
+            //let cvi = res.data.ce_vei_invata.split('*');
+            //cvi.pop();
+            //this.curs.ce_vei_invata = cvi;
             this.playerOptions = {
-                // videojs options
-                muted: false,
                 language: 'en',
                 playbackRates: [0.7, 1.0, 1.5, 2.0],
                 sources: [{
                     type: "video/mp4",
-                    src: "http://192.168.1.27:5001/curs/video"
+                    src: `http://192.168.1.222:5002/curs/video/${this.curs.linkDemo}`
                 }],
             }
-            console.log(this.playerOptions.sources.src);
+            this.chapters = this.curs.chapters
+            console.log(this.chapters);
         })
+
     },
     methods: {
         playerReady(player) {
-            console.log(player);
+            player.play();
+        },
+        sterge() {
+            this.$axios.delete(`/curs/${this.curs.id}`);
+            this.$router.push('/');
+        },
+        insertChapter(chapter){
+            console.log("primesc in index: ", chapter);
+            this.chapters.push(chapter);
+        },
+        viewChapter(chapter){
+            console.log("ma uit la: ", chapter, `http://192.168.1.222:5002/curs/video/${chapter.linkVideo}`);
+            this.player.src({type: 'video/mp4', src: `http://192.168.1.222:5002/curs/video/${chapter.linkVideo}`})
         }
+
     }
 }
 </script>
@@ -103,5 +131,9 @@ export default {
 
     .content {
         padding-left: 4rem;
+    }
+    .video {
+        display: flex;
+        justify-content: center;
     }
 </style>

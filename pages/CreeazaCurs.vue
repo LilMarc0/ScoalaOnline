@@ -106,9 +106,6 @@ export default {
             cvi: []
             }
     },
-    computed: {
-        red: function() {return this.$refs.file;}
-    },
     methods: {
             deleteDropFile() {
                 this.tmb = null
@@ -116,9 +113,9 @@ export default {
             send() {
 
                 let cv;
-                for(cv of this.cvi)
-                    this.model.ce_vei_invata += cv + "*";
+                for(cv of this.cvi) this.model.ce_vei_invata += cv + "*";
 
+                this.model.creator = this.$auth.user._id;
                 let fd = new FormData();
                 fd.append('tmb', this.tmb)
                 fd.append('demo', this.demo)
@@ -128,6 +125,13 @@ export default {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
+                }).then(()=>{
+                    this.$buefy.snackbar.open({
+                        duration: 5000,
+                        message: 'Cursul a fost acceptat.',
+                        position: 'is-bottom-left',
+                    })
+                    this.$router.push('/')
                 })
             }
         }

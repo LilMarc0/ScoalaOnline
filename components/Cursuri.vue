@@ -17,6 +17,7 @@ export default {
     }
   },
   mounted() {
+    if(this.$auth.user) this.$store.dispatch("syncOwnedCourses", {idUser: this.$auth.user.id})
     this.$axios.get('/curs').then((res)=>{
       this.cursuri=res.data
       console.log('cursuri: ', res);

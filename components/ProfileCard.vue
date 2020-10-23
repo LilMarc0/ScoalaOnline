@@ -1,8 +1,8 @@
 <template>
   <div class="card">
   <div class="card-image">
-    <figure class="image is-4by3">
-      <img :src="getImg(profileImage)" alt="Placeholder image">
+    <figure class="image is-4by3" @click="changePicture">
+      <img class="profileImg" :src="avatar" alt="Placeholder image">
     </figure>
   </div>
   <div class="card-content">
@@ -22,6 +22,9 @@
 </template>
 
 <script>
+
+import ProfilePictureForm from "@/components/ProfilePictureForm"
+
 export default {
 
     data(){
@@ -45,16 +48,35 @@ export default {
         }
 
     },
+    computed: {
+      avatar(){
+        console.log(` ---- /${this.profileImage ? this.profileImage : 'empty_profile'}`);
+        return `/${this.profileImage ? this.profileImage : 'empty_profile.png'}`
+      }
+    },
     methods: {
-        getImg: function(src){
-            const images = require.context('../assets/', false, /\.png$/)
-            return images('./' + src + ".png")
-        }
+      changePicture() {
+          this.$buefy.modal.open({
+                parent: this,
+                component: ProfilePictureForm,
+                hasModalCard: true,
+                customClass: 'custom-class custom-class-2',
+                trapFocus: true,
+                events: {
+                  'changePhoto': link => {console.log("in card", link); this.$emit("changePhoto", link)}
+                }
+            })
+      }
+    },
+    mounted() {
+
     }
 
 }
 </script>
 
 <style>
-
+  .profileImg {
+    border-radius: 50%;
+  }
 </style>

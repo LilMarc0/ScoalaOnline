@@ -2,7 +2,7 @@
   <div>
     <Hero/>
     <section id="main">
-       <div id="tile is-ancestor">
+       <div>
           <nuxt/>
        </div>
       <Footer/>

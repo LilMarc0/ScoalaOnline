@@ -2,7 +2,7 @@
   <section class="hero  is-medium">
     <TopNav/>
     <div class="hero-body is-primary">
-      <div class="container">
+      <div class="my-container">
         <h1 class="title">
           EduMania
         </h1>
@@ -41,5 +41,10 @@ export default {
     .subtitle{
       color: white;
       padding-left: 1rem;
+    }
+
+    .my-container{
+      margin-left: 10rem;
+      padding-left: 10rem;
     }
 </style>

@@ -73,20 +73,18 @@ export default {
     // }
         async handleLogin() {
         this.loading = true;
-        console.log('Handle');
         if (this.model.email && this.model.password) {
-            console.log('Da');
-          this.$auth.loginWith('local', {data: this.model}).then((res) => {
-            console.log('Incerc');
+          this.$auth.loginWith('local', {data: this.model})
+          .then((res) => {
             if(res.data.message === 'ok'){
                 this.$router.push("/")
             } else if(res.data.message === 'no_account'){
                 this.errorMessage = "Email sau parola gresite"
                 this.errorCode = res.data.message
-            }
-          }).catch(error => {
+            }})
+            .catch(error => {
                 this.errorMessage = "Email sau parola gresite"
-                this.errorCode = res.data.message
+                this.errorCode = error
           })
         }
 

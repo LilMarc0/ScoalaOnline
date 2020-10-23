@@ -1,6 +1,4 @@
 const express = require("express");
-
-
 const cors = require("cors");
 
 var corsMiddleware = function(req, res, next) {
@@ -13,11 +11,6 @@ var corsMiddleware = function(req, res, next) {
 
 const bodyParser = require("body-parser")
 require('dotenv').config();
-const util = require('util');
-
-
-const packagePublicIp = require('public-ip');
-const object_hash = require('object-hash');
 
 // APP
 const app = express();
@@ -31,46 +24,23 @@ app.use(corsMiddleware);
 const middlewares = require('./auth/middlewares');
 app.use(middlewares.checkTokenSetUser);
 
-const { isLoggedIn } = require("./auth/middlewares");
-const auth = require("./routes/auth");
-
 const authRouter = require('./routes/auth');
-const categoriiRouter = require('./routes/categorii');
-const materiiRouter = require('./routes/materii');
-const grileRouter = require('./routes/grile');
+const categoriiRouter = require('./routes/categories');
+// const materiiRouter = require('./routes/materii');
+// const grileRouter = require('./routes/grile');
 const userRouter = require('./routes/user');
-const cursRouter = require('./routes/cursuri');
-
+const cursRouter = require('./routes/course');
+const userCourseRouter = require('./routes/user_courses');
+const courseChapterRouter = require('./routes/course_chapters');
+const chapterRouter = require('./routes/chapter');
 
 app.use(authRouter);
-app.use(categoriiRouter);
-app.use(materiiRouter);
-app.use(grileRouter);
-app.use(userRouter);
-app.use(cursRouter);
-
-
-async function materieIdByName(name){
-    return new Promise(function(resolve, reject) {
-        console.log("nume materie: ", name);
-        connection.query("select idMaterii from Materii where nume_materie = ?",  name, (err1, results1, fields) => {
-            if(err1) reject(new Error("Nu pot sa gasesc id-ul materiei dupa nume"));
-            resolve(results1[0].idMaterii);
-        })
-    })
-};
-
-async function categorieIdByName(name, idMat){
-    
-    return new Promise(function(resolve, reject){
-        connection.query("select idCategorii from Categorii where nume_categorie = ? and idMaterie = ? ",  [name, idMat], (err1, results1, fields) => {
-            if(err1) reject(new Error("Nu pot sa gasesc id-ul materiei dupa nume"));
-    
-            resolve(results1[0].idCategorii);
-        })
-    })
-
-};
+app.use('/categorii/', categoriiRouter);
+app.use('/user/', userRouter);
+app.use('/curs', cursRouter);
+app.use('/user_has_courses', userCourseRouter)
+app.use('/course_has_chapters', courseChapterRouter)
+app.use('/capitol', chapterRouter)
 
 
 // Returneaza userul pentru autentificare n shit

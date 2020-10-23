@@ -1,28 +1,47 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router();        
 
-const getConnection = require('../sqlConnection');
+const {User, Course} = require('../models');
+const user = require('../models/user');
 
-router.get('/user/credit/:id', (req, res)=>{
-    getConnection((err, connection) => {
-        if(err) {console.log('User credit get error');}
-        connection.query('select credit from Users where idUser=?', [req.params.id], (err, results, fields) => {
-            if(err) { console.log(err)};
-            res.send(results)
-        });
-        connection.release();
-    })
+const multer = require("multer");
+let fs      = require('fs')
+var upload = multer({ dest: '../static/' })
+
+
+router.get('/', (req, res) => {
+
+});
+
+router.get('/:id', async (req, res) => {
+    const usr = await User.findByPk(req.params.id, {
+        include: [{model: Course}]
+    });
+    res.send(usr);
+});
+
+router.put('/profile/photo', upload.fields([{'name': 'photo'}]), async (req, res) =>{
+
+    let usr = await User.findByPk(req.user.id);
+    usr.linkPhoto = req.files.photo[0].path.split('/')[2];
+    usr = await usr.save();
+    res.json(usr.linkPhoto);
 })
 
-router.put('/user/credit/:id/:newCredit', (req, res) => {
-    getConnection((err, connection) => {
-        if(err) {console.log('User credit update error');}
-        connection.query('update Users set credit=? where idUser=?', [req.params.newCredit, req.params.id], (err, results, fields) => {
-            if(err) { console.log(err)};
-            res.send({message: 'ok'})
-        });
-        connection.release();
+router.put('/:id', (req, res) => {
+    User.update({
+        ...req.body
+    },
+    {
+        where: req.params.id
+    });
+    res.send({message: "ok"});
+});
+
+router.get('/credit/:id', (req, res) => {
+    User.findByPk(req.params.id).then(usr => {
+        res.json(usr.credit);
     })
-})
+});
 
 module.exports = router
